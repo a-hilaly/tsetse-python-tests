@@ -1,11 +1,11 @@
 #!/bash/bin
 
 function execute_commands () {
-   $1
+   printenv
 }
 
 function execute_scripts () {
    bash $1
 }
 
-$1
+execute_commands
