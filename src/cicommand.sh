@@ -1,6 +1,5 @@
 #!/bash/bin
 
-
 function _pre_compile () {
     srcc=$1
     source $srcc
