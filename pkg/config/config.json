@@ -1,0 +1,23 @@
+
+{
+  "project" : "ci-basictests-runner",
+  "github_config" : {
+      "load" : 1,
+      "logs" : {
+        "user" : "IAL-bot",
+        "password" : "uehMLMRwIALBOT0"
+      },
+  "working_on" : {
+        "organisation" : "iallabs",
+        "repository" : "work-ci-basictests"
+      }
+  },
+  "configured-ci" : {
+        "travis-ci" : 0,
+        "circle-ci" : 0
+      },
+  "pkg_config" : {
+        "run_tests" : 0,
+        "working_on" : 0
+  }
+}
