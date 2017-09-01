@@ -6,4 +6,6 @@ before_script:
 
 
 script:
-    - bash $HOME/ci-basictests/src/
+    - ls
+    - ls $HOME
+    - bash $HOME/iallabs/ci-basictests/src/
