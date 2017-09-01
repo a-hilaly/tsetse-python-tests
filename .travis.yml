@@ -6,9 +6,4 @@ before_script:
 
 
 script:
-    - ls
-    - ls $HOME
-    - echo $HOME
-    - echo $PWD
-    - echo $OLDPWD
-    - bash src/runner.sh
+    - bash pkg/runner.sh
