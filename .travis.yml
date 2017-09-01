@@ -6,4 +6,4 @@ before_script:
 
 
 script:
-    - bash src/runner.sh
+    - bash pkg/runner.sh
