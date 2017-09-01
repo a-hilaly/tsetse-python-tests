@@ -6,4 +6,9 @@ before_script:
 
 
 script:
-    - bash $HOME/ci-basictests/src/
+    - ls
+    - ls $HOME
+    - echo $HOME
+    - echo $PWD
+    - echo $OLDPWD
+    - bash src/runner.sh

@@ -1,0 +1,5 @@
+# ci-basictests
+Continous integration fast tests . For basic commands and scripts execution
+
+
+[![Build Status](https://travis-ci.com/iallabs/ci-basictests.svg?token=qsqoiH3xhBi1WyATcy2m&branch=master)](https://travis-ci.com/iallabs/ci-basictests)
