@@ -1,7 +1,9 @@
 language: bash
 
+
 before_script:
     - sudo apt install jq
+
 
 script:
     - bash $HOME/ci-basictests/src/
