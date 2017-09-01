@@ -8,4 +8,7 @@ before_script:
 script:
     - ls
     - ls $HOME
-    - bash $HOME/iallabs/ci-basictests/src/
+    - echo $HOME
+    - echo $PWD
+    - echo $OLDPWD
+    - bash src/runner.sh
