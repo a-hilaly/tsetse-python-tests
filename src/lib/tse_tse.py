@@ -5,47 +5,51 @@ class SkipTest(Exception):
 class TestFail(Exception):
     pass
 
-class ReportTest(Exception):
-    pass
-
 class SkipModule(Exception):
     pass
 
-
-
-
-SUCCEEDED_TEST = "[ OK ] ... {0} succeeded ES:{1} with a total run time of : {2} ms"
-FAILED_TEST = "[WARN] ... {0} failed after runing : {1} ms"
-SKIPPED_TEST = "[SKIP] ... {0} Skipped before running ES:{1} [ {2} ]"
-
-
-
-test_modules = []
-
-def parse_tests():
+class Fatal(Exception):
     pass
 
 
-def test_function(func):
+
+SUCCEEDED_TEST = "[ OK ] ... {0} succeeded with a total run time of : {1} [seconds]"
+FAILED_TEST = "[FAIL] ... {0} failed after runing : {1} [seconds]"
+SKIPPED_TEST = "[SKIP] ... {0} Skipped by controll"
+
+
+SKIPPED_MODULE = "[SKIP] ... Skipped module {0}"
+IMPORTED_MODULE = "[IMPR] ... Imported module {0}"
+
+
+def test_function(func, verbose=False):
     t1 = time.time()
     try:
         es, t2 = func(), time.time()
-        print(SUCCEEDED_TEST.format(func.__name__, es, t2 - t1))
+        if verbose:
+            print(SUCCEEDED_TEST.format(func.__name__, t2 - t1))
         return True
     except SkipTest:
-        pass
-    except SkipTest:
-        pass
+        if verbose:
+            print(SKIPPED_TEST.format(func.__name__))
     except:
         t2 = time.time()
-        print(FAILED_TEST.format(func.__name__, t2 - t1))
+        if verbose:
+            print(FAILED_TEST.format(func.__name__, t2 - t1))
         return False
 
 
 def import_module_tests_functions(module):
-    mod = __import__(module, globals(), locals(), [''])
-    functions = getattr(mod, '__all__')         #XXX: Python need this usless arguments
-    return functions                            # to import all objects in a module
+    try:
+        mod = __import__(module, globals(), locals(), [''])
+        functions = getattr(mod, '__all__')
+        print(IMPORTED_MODULE.format(module))
+        return functions
+    except SkipModule:
+        print(SKIPPED_MODULE.format(module))
+        return -1
+    except:
+        return -2
 
 
 def run_pytests_modules(*test_modules):
