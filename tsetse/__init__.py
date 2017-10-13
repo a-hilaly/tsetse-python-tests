@@ -1,1 +1,1 @@
-from .tse_tse import run_all_tests as r
+from .tse_tse import run_all_tests as run
