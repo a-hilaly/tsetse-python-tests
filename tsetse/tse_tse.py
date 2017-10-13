@@ -14,7 +14,6 @@ class Fatal(Exception):
     pass
 
 
-
 SUCCEEDED_TEST = "[ OK ] ... {0} succeeded with a total run time of : {1} [seconds]"
 FAILED_TEST = "[FAIL] ... {0} failed after runing : {1} [seconds]"
 SKIPPED_TEST = "[SKIP] ... {0} Skipped by controll"
@@ -91,16 +90,16 @@ def run_pytests_modules(*test_modules, verbose=False):
             print("        ====> Module tests total run time : {0} ms".format(k2 - k1))
             print("        ====> end module test\n")
     t2 = time.time()
-    sr = tsuccess/tfunction * 100
+    sr = tsuccess/tfunction * 100 if tfunction else 100
     if verbose:
         print('[INFO] ... --- end test ---')
         print('       ====> Total runtime : {0} ms'.format(t2 - t1))
-        print('       ====> Success rate : {0}  [ {1}/{2} ]'.format(sr, tsuccess, tfunction))
+        print('       ====> Success rate : {0}%  [ {1}/{2} ]'.format(sr, tsuccess, tfunction))
     # proc test error (for CI)
     if sr < 100:
         raise TestFail()
 
-test_modules = ['mysql_utils.tests.test_mysql_types']
+test_modules = []
 
 def run_all_tests(verbose=False):
     run_pytests_modules(*test_modules, verbose=verbose)
